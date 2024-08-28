@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于Maode</title>
+    <style>
+        @font-face {
+            font-family: 'MaodeWigg';
+            src: url('logo-maode-wigg.ttf') format('truetype');
+        }
+
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+        }
+
+        .section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            scroll-snap-align: start;
+        }
+
+        .myname {
+            background-color: #000;
+            color: #fff;
+            z-index: 2;
+            font-family: 'MaodeWigg', sans-serif;
+            text-shadow: 0 0 20px white;
+        }
+
+        .introduce {
+            background-color: #000;
+            color: #fff;
+            z-index: 1;
+        }
+
+
+        .like {
+            background-color: #000;
+            color: #fff;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 100px;
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: 50px;
+            text-align: center;
+            margin-top: -20px;
+        }
+
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .highlight {
+            font-size: 33px;
+            font-family: 'MaodeWigg', sans-serif;
+        }
+
+
+        .inline {
+            display: inline;
+            font-size: 30px;
+        }
+
+        .glow {
+            font-size: 35px;
+            text-shadow: 0 0 10px white;
+        }
+
+        .goals {
+            background-color: #000;
+            color: #fff;
+            z-index: 1;
+        }
+
+
+        .email {
+            background-color: #000;
+            color: #fff;
+            z-index: 1;
+        }
+
+        .intro-x {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .spinner {
+            width: 26px;
+            height: 26px;
+            border: 3px solid #d3d3d3;
+            border-top: 3px solid #000;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .profile-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            justify-content: center;
+        }
+
+        .profile-card {
+            text-align: center;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 200px;
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="section myname">
+            <div>
+                <div class="title">Maode</div>
+                <div class="subtitle">PZXiymd</div>
+            </div>
+        </div>
+        <div class="section introduce">
+            <div class="content">
+                <h2 class="inline glow">我</h2>
+                <p class="inline">为何选择<span class="highlight">"Maode"</span>作为网名？</p><br><br><br>
+                <p class="intro-x">最初,我喜欢上了动漫作品《魔女之旅》中的主角"伊蕾娜",因此选择了"伊蕾娜の睡觉"作为网名。但后来,受到观看"猫德学院"视频的启发,我决定将网名改为"猫德"</p>
+                <p class="intro-x">而"猫德"的中文拼音发音即为"Maode",因此便诞生了如今的昵称<span class="highlight">Maode</span>一名。</p>
+            </div>
+        </div>
+
+        <div class="section goals">
+            <div class="content">
+                <h2 class="inline glow">我</h2>
+                <h2 class="inline">的目标与梦想<span class="glow">进度 2/3</span></h2><br><br><br>
+                <p class="inline">做出中文编译器：<span class="glow">✔</span></p><br><br>
+                <p class="inline">做出一个网页聊天系统：<span class="glow">✔</span></p><br><br>
+                <p class="inline" style="display: inline;">开源20个精品项目回馈开源社区：
+                <div class="spinner" style="display: inline-block;"></div>
+                </p>
+            </div>
+        </div>
+        <div class="section email">
+            <div class="content">
+                <h2 class="inline">如何联系</h2>
+                <h2 class="inline glow">我</h2>
+                <h2 class="inline">？</h2><br><br>
+                <p class="inline">maode2024@outlook.com</p>
+            </div>
+        </div>
+        
+
+    </div>
+</body>
+
+</html>
