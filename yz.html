@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>身份验证</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+        }
+        progress {
+            width: 100%;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>身份验证</h1>
+    <input type="text" id="key" placeholder="请输入"><br>
+    <button onclick="generateTOTP()">START</button>
+    <h2>验证代码: <span id="totp"></span></h2>
+    <h3 id="remaining-time"></h3>
+    <progress id="progress" value="0" max="100" style="display:none;"></progress>
+
+    <script>
+        var timerId;
+
+        function generateTOTP() {
+            clearTimeout(timerId); 
+
+            var key = document.getElementById('key').value;
+
+            key = key.toUpperCase().replace(/\s/g, "");
+            key = base32Decode(key);
+
+            var timeStep = 30;  
+            var currTime = Math.floor(Date.now() / 1000);
+
+            var remainingTime = timeStep - (currTime % timeStep) - 1;
+            var remainingTimems = timeStep * 1000 - (Date.now() % (timeStep * 1000));
+
+            var message = Math.floor(currTime / timeStep).toString(16);
+            message = message.padStart(16, '0');
+            var hmacHash = hmacSHA1(key, hexToBytes(message));
+            var offset = hmacHash[19] & 0xf;
+            var otp =
+                ((hmacHash[offset] & 0x7f) << 24) |
+                (hmacHash[offset + 1] << 16) |
+                (hmacHash[offset + 2] << 8) |
+                hmacHash[offset + 3];
+            otp = (otp % 1000000).toString().padStart(6, '0');
+
+            document.getElementById('totp').textContent = otp;
+            document.getElementById('remaining-time').textContent = '剩余时间: ' + remainingTime + ' 秒';
+
+            var progress = document.getElementById('progress');
+            var progressWidth = (remainingTimems / (timeStep * 1000)) * 100;
+            progress.style.display = 'block';
+            progress.value = progressWidth;
+
+            timerId = setTimeout(generateTOTP, 100);
+        }
+        function base32Decode(input) {
+            var base32chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+            var base32lookup = {};
+            for (var i = 0; i < base32chars.length; i++) {
+                base32lookup[base32chars.charAt(i)] = i;
+            }
+            
+            input = input.replace(/=+$/, '');
+            var bits = '';
+            var output = [];
+            for (var i = 0; i < input.length; i++) {
+                var char = input.charAt(i).toUpperCase();
+                var val = base32lookup[char];
+                bits += ('00000' + val.toString(2)).slice(-5);
+            }
+            while (bits.length >= 8) {
+                output.push(parseInt(bits.substring(0, 8), 2));
+                bits = bits.substring(8);
+            }
+            
+            return new Uint8Array(output);
+        }
+        function hmacSHA1(key, message) {
+            var keyBytes = new Uint8Array(key);
+            var messageBytes = new Uint8Array(message);
+            var hmacKey = (keyBytes.length > 64) ? sha1(keyBytes) : keyBytes;
+            if (hmacKey.length < 64) {
+                var padding = new Uint8Array(64 - hmacKey.length);
+                hmacKey = concatenateUint8Arrays(hmacKey, padding);
+            }
+
+            var innerPad = new Uint8Array(64);
+            var outerPad = new Uint8Array(64);
+            for (var i = 0; i < 64; i++) {
+                innerPad[i] = hmacKey[i] ^ 0x36;
+                outerPad[i] = hmacKey[i] ^ 0x5c;
+            }
+
+            var innerHash = sha1(concatenateUint8Arrays(innerPad, messageBytes));
+            var outerHash = sha1(concatenateUint8Arrays(outerPad, innerHash));
+
+            return outerHash;
+        }
+        function sha1(message) {
+            var sha1Hash = CryptoJS.SHA1(CryptoJS.lib.WordArray.create(message));
+            return hexToBytes(sha1Hash.toString());
+        }
+        function hexToBytes(hex) {
+            var bytes = [];
+            for (var i = 0; i < hex.length; i += 2) {
+                bytes.push(parseInt(hex.substr(i, 2), 16));
+            }
+            return bytes;
+        }
+        function concatenateUint8Arrays(a, b) {
+            var result = new Uint8Array(a.length + b.length);
+            result.set(a);
+            result.set(b, a.length);
+            return result;
+        }
+    </script>
+</body>
+</html>
