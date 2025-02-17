@@ -238,12 +238,16 @@
         不支持
     </audio>
     
-    <script>
+       <script>
         const audioElement = document.getElementById('audio');
     
+        audioElement.controls = false;
+    
         audioElement.addEventListener('canplaythrough', function() {
-            audioElement.play();
+            audioElement.controls = true;
         });
+    
+        audioElement.load();
     </script>
 </body>
 
