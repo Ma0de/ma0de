@@ -233,10 +233,18 @@
     </div>
     <div class="title">Maode</div>
     <div class="subtitle">PZXiymd</div>
-    <audio controls>
+   <audio id="audio" controls>
         <source src="NUDE$ - Под луной.flac" type="audio/flac">
         不支持
-      </audio>
+    </audio>
+    
+    <script>
+        const audioElement = document.getElementById('audio');
+    
+        audioElement.addEventListener('canplaythrough', function() {
+            audioElement.play();
+        });
+    </script>
 </body>
 
 </html>
