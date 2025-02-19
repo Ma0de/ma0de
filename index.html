@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>猫德</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header>
         <nav>
-            <div class="logo">  
+            <div class="logo">
                 <img src="img/whitefill.png" alt="My">
             </div>
             <div class="nav-links">
@@ -18,7 +20,7 @@
             </div>
             <div class="nav-right">
                 <a class="link" href="#" data-target="#index">我</a>
-              
+
             </div>
         </nav>
     </header>
@@ -38,7 +40,29 @@
         </section>
         <section class="agency" id="agency">
             <div class="agency-left">
-                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"><mask id="IconifyId1951da4e265c58f742"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="64" stroke-dashoffset="64" d="M12 3c4.97 0 9 4.03 9 9c0 4.97 -4.03 9 -9 9c-4.97 0 -9 -4.03 -9 -9c0 -4.97 4.03 -9 9 -9Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="64;0"/></path><path fill="#fff" stroke="none" d="M11 11L12 12L13 13L12 12z" transform="rotate(-180 12 12)"><animate fill="freeze" attributeName="d" begin="0.6s" dur="0.3s" values="M11 11L12 12L13 13L12 12z;M10.2 10.2L17 7L13.8 13.8L7 17z"/><animateTransform attributeName="transform" dur="9s" repeatCount="indefinite" type="rotate" values="-180 12 12;0 12 12;0 12 12;0 12 12;0 12 12;270 12 12;-90 12 12;0 12 12;-180 12 12;-35 12 12;-40 12 12;-45 12 12;-45 12 12;-110 12 12;-135 12 12;-180 12 12"/></path><circle cx="12" cy="12" r="1" fill="#000" fill-opacity="0" stroke="none"><animate fill="freeze" attributeName="fill-opacity" begin="0.9s" dur="0.15s" values="0;1"/></circle></g></mask><rect width="24" height="24" fill="#000000" mask="url(#IconifyId1951da4e265c58f742)"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24">
+                    <mask id="IconifyId1951da4e265c58f742">
+                        <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                            <path stroke-dasharray="64" stroke-dashoffset="64"
+                                d="M12 3c4.97 0 9 4.03 9 9c0 4.97 -4.03 9 -9 9c-4.97 0 -9 -4.03 -9 -9c0 -4.97 4.03 -9 9 -9Z">
+                                <animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="64;0" />
+                            </path>
+                            <path fill="#fff" stroke="none" d="M11 11L12 12L13 13L12 12z"
+                                transform="rotate(-180 12 12)">
+                                <animate fill="freeze" attributeName="d" begin="0.6s" dur="0.3s"
+                                    values="M11 11L12 12L13 13L12 12z;M10.2 10.2L17 7L13.8 13.8L7 17z" />
+                                <animateTransform attributeName="transform" dur="9s" repeatCount="indefinite"
+                                    type="rotate"
+                                    values="-180 12 12;0 12 12;0 12 12;0 12 12;0 12 12;270 12 12;-90 12 12;0 12 12;-180 12 12;-35 12 12;-40 12 12;-45 12 12;-45 12 12;-110 12 12;-135 12 12;-180 12 12" />
+                            </path>
+                            <circle cx="12" cy="12" r="1" fill="#000" fill-opacity="0" stroke="none">
+                                <animate fill="freeze" attributeName="fill-opacity" begin="0.9s" dur="0.15s"
+                                    values="0;1" />
+                            </circle>
+                        </g>
+                    </mask>
+                    <rect width="24" height="24" fill="#000000" mask="url(#IconifyId1951da4e265c58f742)" />
+                </svg>
                 <h2>我的目标</h2>
             </div>
             <div class="agency-right">
@@ -46,7 +70,7 @@
                 <p>通过自己的努力，挑战自己，取得更好的成绩，成为对社会有用的人</p>
             </div>
         </section>
-    
+
         <section class="legacy">
             <div class="legacy-left">
                 <img src="img/weirenmingfuwu.png" alt="毛泽东思想" class="cia-seal">
@@ -59,23 +83,24 @@
             </div>
         </section>
     </main>
-    
+
 </body>
 <script>
-    document.getElementById('mylegacy').onclick = function() {
-            window.location.href = 'https://baike.baidu.com/item/%E4%B8%BA%E4%BA%BA%E6%B0%91%E6%9C%8D%E5%8A%A1/40335';
-        };
-document.querySelectorAll('.link').forEach(link => {
-        link.addEventListener('click', function(event) {
+    document.getElementById('mylegacy').onclick = function () {
+        window.open('https://baike.baidu.com/item/%E4%B8%BA%E4%BA%BA%E6%B0%91%E6%9C%8D%E5%8A%A1/40335', '_blank');
+    };
+    document.querySelectorAll('.link').forEach(link => {
+        link.addEventListener('click', function (event) {
             event.preventDefault();
 
             const targetID = this.getAttribute('data-target');
             const targetSection = document.querySelector(targetID);
-            
+
             if (targetSection) {
                 targetSection.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
 </script>
+
 </html>
