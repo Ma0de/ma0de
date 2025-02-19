@@ -55,13 +55,16 @@
                 <h2>我的信念</h2>
                 <h3>“为人民服务”是我一直坚持的理念</h3>
                 <p>我相信通过不懈的努力和对人民的热爱，我能实现自己的理想，为社会作出贡献。</p>
-                <button class="discover-button">探索我的信念</button>
+                <button class="discover-button" id="mylegacy">探索我的信念</button>
             </div>
         </section>
     </main>
     
 </body>
 <script>
+    document.getElementById('mylegacy').onclick = function() {
+            window.location.href = 'https://baike.baidu.com/item/%E4%B8%BA%E4%BA%BA%E6%B0%91%E6%9C%8D%E5%8A%A1/40335';
+        };
 document.querySelectorAll('.link').forEach(link => {
         link.addEventListener('click', function(event) {
             event.preventDefault();
