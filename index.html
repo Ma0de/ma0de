@@ -1,254 +1,78 @@
 <!DOCTYPE html>
 <html lang="zh">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maode</title>
-    <style>
-        @font-face {
-            font-family: 'MaodeWigg';
-            src: url('logo-maode-wigg.ttf') format('truetype');
-        }
-
-        @keyframes animation-center {
-            0% {
-                transform: translateY(-30%) translateX(-50%);
-            }
-
-            50% {
-                transform: translateY(30%) translateX(-50%);
-            }
-
-            100% {
-                transform: translateY(-30%) translateX(-50%);
-            }
-        }
-
-        @keyframes animation-left {
-            0% {
-                transform: translateY(25%) translateX(0%) skew(-40deg, 20deg);
-            }
-
-            50% {
-                transform: translateY(200%) translateX(150%) skew(40deg, 0deg);
-            }
-
-            100% {
-                transform: translateY(25%) translateX(0%) skew(-40deg, 20deg);
-            }
-        }
-
-        @keyframes animation-right {
-            0% {
-                transform: translateY(5%) translateX(0%) skew(40deg, 20deg);
-            }
-
-            50% {
-                transform: translateY(200%) translateX(-150%) skew(-40deg, 0deg);
-            }
-
-            100% {
-                transform: translateY(5%) translateX(0%) skew(40deg, 20deg);
-            }
-        }
-
-        .title {
-            text-shadow: 0 0 20px white;
-            color: transparent;
-            font-size: 100px;
-            font-family: 'MaodeWigg', sans-serif;
-            text-align: center;
-            position: absolute;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: linear-gradient(45deg, #ff6f61, #6b5b95, #88b04b, #f7cac9);
-            background-size: 400% 400%;
-            animation: gradientAnimation 6s ease infinite;
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
-
-        .subtitle {
-            text-shadow: 0 0 20px white;
-            color: white;
-            font-size: 50px;
-            font-family: 'MaodeWigg', sans-serif;
-            text-align: center;
-            position: absolute;
-            top: 44%;
-            left: 50%;
-            transform: translate(-50%, 50%);
-            margin-top: 20px;
-        }
-
-        audio {
-            text-shadow: 0 0 20px white;
-            color: white;
-            font-size: 50px;
-            font-family: 'MaodeWigg', sans-serif;
-            text-align: center;
-            position: absolute;
-            top: 64%;
-            left: 50%;
-            transform: translate(-50%, 50%);
-            margin-top: 20px;
-        }
-
-        .Signature {
-            text-shadow: 0 0 20px white;
-            color: transparent;
-            font-size: 100px;
-            font-family: 'MaodeWigg', sans-serif;
-            text-align: center;
-            position: absolute;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: linear-gradient(45deg, #ff6f61, #6b5b95, #88b04b, #f7cac9);
-            background-size: 400% 400%;
-            animation: gradientAnimation 6s ease infinite;
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
-
-        .animation_wrapper {
-            filter: blur(var(--gradient-blur-radius, 160px));
-            z-index: -4;
-            top: -360px;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            max-width: 800px;
-            margin: 0 auto;
-            position: absolute;
-        }
-
-        .animation {
-            animation-duration: 17s;
-            animation-iteration-count: infinite;
-            animation-timing-function: cubic-bezier(0.1, 0, 0.9, 1);
-            position: absolute;
-            border-radius: 100%;
-            opacity: 70%;
-        }
-
-        .animation_center {
-            width: 300px;
-            height: 300px;
-            z-index: -2;
-            left: 50%;
-            top: 20%;
-            animation-name: animation-center;
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .animation_left {
-            width: 300px;
-            height: 300px;
-            z-index: -1;
-            left: 0%;
-            top: 0%;
-            animation-name: animation-left;
-            animation-direction: reverse;
-            background: rgba(255, 255, 255, 1);
-        }
-
-        .animation_right {
-            width: 300px;
-            height: 300px;
-            z-index: -3;
-            right: 0%;
-            top: 0%;
-            animation-name: animation-right;
-            background: rgba(255, 255, 255, 1);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-
-            .animation,
-            .animation_center,
-            .animation_left,
-            .animation_right {
-                animation: none;
-            }
-
-            .animation_center {
-                left: 40%;
-                top: 20%;
-            }
-
-            .animation_left {
-                left: 15%;
-                top: 15%;
-            }
-
-            .animation_right {
-                right: 5%;
-                top: 15%;
-            }
-        }
-
-        h1 {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 3em;
-            text-align: center;
-            z-index: 1;
-        }
-
-        @keyframes gradientAnimation {
-            0% {
-                background-position: 0% 0%;
-            }
-
-            50% {
-                background-position: 100% 100%;
-            }
-
-            100% {
-                background-position: 0% 0%;
-            }
-        }
-
-        body {
-            overflow-y: scroll;
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
+    <title>猫德</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
-<body style="background-color:black">
-    <div class="animation_wrapper">
-        <div class="animation animation_center"></div>
-        <div class="animation animation_left"></div>
-        <div class="animation animation_right"></div>
-    </div>
-    <div class="title">Maode</div>
-    <div class="subtitle">PZXiymd</div>
-   <audio id="audio" controls>
-        <source src="NUDE$ - Под луной.flac" type="audio/flac">
-        不支持
-    </audio>
+<body>
+    <header>
+        <nav>
+            <div class="logo">  
+                <img src="img/whitefill.png" alt="My">
+            </div>
+            <div class="nav-links">
+                <a class="link" href="#" data-target="#agency">我的目标</a>
+                <a class="link" href="#" data-target="#legacy">我的信念</a>
+            </div>
+            <div class="nav-right">
+                <a href="#">我</a>
+              
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>我是<br>新时代<br>的奋斗者</h1>
+                <div class="hero-content-z">
+                    <p class="highlight">为人民服务，努力学习，成就自我</p>
+                    <p>在我追求生活的旅程中，用努力和智慧为社会贡献自己的力量。</p>
+                    <button class="cta-button link" data-target="#agency">我的目标</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="img/white.png">
+            </div>
+        </section>
+        <section class="agency" id="agency">
+            <div class="agency-left">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24"><mask id="IconifyId1951da4e265c58f742"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="64" stroke-dashoffset="64" d="M12 3c4.97 0 9 4.03 9 9c0 4.97 -4.03 9 -9 9c-4.97 0 -9 -4.03 -9 -9c0 -4.97 4.03 -9 9 -9Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.6s" values="64;0"/></path><path fill="#fff" stroke="none" d="M11 11L12 12L13 13L12 12z" transform="rotate(-180 12 12)"><animate fill="freeze" attributeName="d" begin="0.6s" dur="0.3s" values="M11 11L12 12L13 13L12 12z;M10.2 10.2L17 7L13.8 13.8L7 17z"/><animateTransform attributeName="transform" dur="9s" repeatCount="indefinite" type="rotate" values="-180 12 12;0 12 12;0 12 12;0 12 12;0 12 12;270 12 12;-90 12 12;0 12 12;-180 12 12;-35 12 12;-40 12 12;-45 12 12;-45 12 12;-110 12 12;-135 12 12;-180 12 12"/></path><circle cx="12" cy="12" r="1" fill="#000" fill-opacity="0" stroke="none"><animate fill="freeze" attributeName="fill-opacity" begin="0.9s" dur="0.15s" values="0;1"/></circle></g></mask><rect width="24" height="24" fill="#000000" mask="url(#IconifyId1951da4e265c58f742)"/></svg>
+                <h2>我的目标</h2>
+            </div>
+            <div class="agency-right">
+                <h3>我正在为成为一名优秀的博爱高中生而努力</h3>
+                <p>通过自己的努力，挑战自己，取得更好的成绩，成为对社会有用的人</p>
+            </div>
+        </section>
     
-       <script>
-        const audioElement = document.getElementById('audio');
+        <section class="legacy">
+            <div class="legacy-left">
+                <img src="img/weirenmingfuwu.png" alt="毛泽东思想" class="cia-seal">
+            </div>
+            <div class="legacy-right">
+                <h2>我的信念</h2>
+                <h3>“为人民服务”是我一直坚持的理念</h3>
+                <p>我相信通过不懈的努力和对人民的热爱，我能实现自己的理想，为社会作出贡献。</p>
+                <button class="discover-button">探索我的信念</button>
+            </div>
+        </section>
+    </main>
     
-        audioElement.controls = false;
-    
-        audioElement.addEventListener('canplaythrough', function() {
-            audioElement.controls = true;
-        });
-    
-        audioElement.load();
-    </script>
 </body>
+<script>
+document.querySelectorAll('.link').forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
 
+            const targetID = this.getAttribute('data-target');
+            const targetSection = document.querySelector(targetID);
+            
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
 </html>
