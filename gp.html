@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>股票交易模拟器</title>
-    <link rel="stylesheet" href="gpstyles.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -47,6 +47,10 @@
                 </div>
 
             </div>
+            <div class="data-control">
+                <button class="data-btn" onclick="downloadGameData()">下载数据</button>
+                <button class="data-btn" onclick="loadGameDataFromFile()">加载数据</button>
+            </div>
         </div>
 
         <!-- 中间主图表区域 -->
@@ -71,7 +75,12 @@
             <div class="chart-container">
                 <canvas id="priceChart"></canvas>
             </div>
-           
+            <div class="chart-footer">
+                <div class="indicators">
+                    <label><input type="checkbox" checked> MA50</label>
+                    <label><input type="checkbox" checked> MA200</label>
+                </div>
+            </div>
         </div>
 
         <!-- 右侧交易面板 -->
@@ -148,7 +157,14 @@
             </div>
         </div>
     </div>
+    
 
-    <script src="gpscript.js"></script>
+    <script src="script.js"></script>
+    <script>
+        window.addEventListener('beforeunload', function (e) {
+            e.preventDefault();
+            e.returnValue = '';
+        });
+    </script>
 </body>
 </html>
