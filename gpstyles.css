@@ -298,3 +298,25 @@ body {
 .price-controls button:hover {
     background-color: #3d4252;
 }
+.data-btn {
+    padding: 8px 16px;
+    background-color: #2a2e39;
+    color: #fff;
+    border: 1px solid #3370ff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.data-btn:hover {
+    background-color: #3370ff;
+}
+.data-control {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
