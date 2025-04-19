@@ -86,23 +86,20 @@
             transition: width 0.1s;
         }
         
-        .permission-prompt {
-            margin: 20px 0;
-            padding: 15px;
-            background-color: #fff3cd;
-            border-left: 5px solid #ffeeba;
-            color: #856404;
-            text-align: left;
+        .mic-check {
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 5px;
         }
         
-        .permission-btn {
-            background-color: #ffc107;
-            color: #856404;
-            margin-top: 10px;
+        .mic-ok {
+            background-color: #d5f5e3;
+            color: #27ae60;
         }
         
-        .permission-btn:hover {
-            background-color: #e0a800;
+        .mic-error {
+            background-color: #fadbd8;
+            color: #e74c3c;
         }
         
         .hidden {
@@ -114,9 +111,8 @@
     <div class="container">
         <h1>去或不去随机选择器</h1>
         
-        <div class="permission-prompt" id="permissionPrompt">
-            <p>本工具需要麦克风权限来生成真正的随机结果</p>
-            <button class="permission-btn" id="requestPermissionBtn">允许使用麦克风</button>
+        <div class="mic-check hidden" id="micCheck">
+            <span id="micCheckText">正在检查麦克风...</span>
         </div>
         
         <div class="result" id="result">?</div>
@@ -143,8 +139,8 @@
         const loading = document.getElementById('loading');
         const micStatus = document.getElementById('micStatus');
         const audioLevel = document.getElementById('audioLevel');
-        const permissionPrompt = document.getElementById('permissionPrompt');
-        const requestPermissionBtn = document.getElementById('requestPermissionBtn');
+        const micCheck = document.getElementById('micCheck');
+        const micCheckText = document.getElementById('micCheckText');
         const additionalInfo = document.getElementById('additionalInfo');
         
         let audioContext;
@@ -153,22 +149,13 @@
         let stream;
         let micAvailable = false;
         
-        // 请求麦克风权限
-        async function requestMicrophonePermission() {
+        // 页面加载时检查麦克风状态
+        window.addEventListener('load', async () => {
             try {
-                micStatus.textContent = "正在请求麦克风权限...";
+                micCheck.classList.remove('hidden');
+                micCheckText.textContent = "正在检查麦克风...";
                 
-                // 显示明确的权限请求提示
-                permissionPrompt.style.display = 'block';
-                
-                // 等待用户点击权限请求按钮
-                await new Promise((resolve) => {
-                    requestPermissionBtn.addEventListener('click', resolve, { once: true });
-                });
-                
-                micStatus.textContent = "正在检查麦克风...";
-                
-                // 实际请求麦克风权限
+                // 尝试获取麦克风权限（不保持打开状态）
                 stream = await navigator.mediaDevices.getUserMedia({ audio: true });
                 
                 // 设置音频分析
@@ -189,30 +176,31 @@
                 
                 if (rms > 0.01) { // 有实际音频输入
                     micAvailable = true;
+                    micCheck.classList.add('mic-ok');
+                    micCheckText.textContent = "✓ 麦克风可用";
                     decideBtn.disabled = false;
-                    permissionPrompt.style.display = 'none';
-                    additionalInfo.textContent = "麦克风已准备好使用";
+                    additionalInfo.textContent = "检测到有效的麦克风输入，可以开始使用";
                 } else {
-                    additionalInfo.textContent = "麦克风无输入或音量过低，请检查后刷新页面";
+                    micCheck.classList.add('mic-error');
+                    micCheckText.textContent = "✗ 麦克风无输入或音量过低";
+                    additionalInfo.textContent = "请确保麦克风已连接并允许访问，然后刷新页面";
                 }
             } catch (error) {
                 micAvailable = false;
-                decideBtn.disabled = true;
+                micCheck.classList.add('mic-error');
+                micCheckText.textContent = "✗ 无法访问麦克风";
                 
                 if (error.name === 'NotAllowedError') {
                     additionalInfo.textContent = "您拒绝了麦克风访问权限，请刷新页面并允许访问";
                 } else if (error.name === 'NotFoundError') {
-                    additionalInfo.textContent = "未找到麦克风设备";
+                    additionalInfo.textContent = "未找到麦克风设备，请连接麦克风后刷新页面";
                 } else {
-                    additionalInfo.textContent = "麦克风访问错误: " + error.message;
+                    additionalInfo.textContent = "麦克风检查失败: " + error.message;
                 }
                 
-                console.error("麦克风权限错误:", error);
+                console.error("麦克风检查错误:", error);
             }
-        }
-        
-        // 页面加载时请求权限
-        window.addEventListener('load', requestMicrophonePermission);
+        });
         
         // 收集麦克风噪声数据
         async function collectMicrophoneNoise() {
@@ -279,8 +267,6 @@
         
         // 生成随机决定
         async function makeDecision() {
-            if (!micAvailable) return;
-            
             // 显示加载状态
             loading.style.display = 'block';
             result.textContent = "思考中...";
