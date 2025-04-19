@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>去或不去随机选择器</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 90%;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        
+        .result {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 30px 0;
+            min-height: 50px;
+            color: #e74c3c;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        button:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+        
+        .info {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        .loading {
+            display: none;
+            margin: 20px 0;
+        }
+        
+        #audioIndicator {
+            height: 20px;
+            width: 100%;
+            background-color: #eee;
+            margin-top: 10px;
+            position: relative;
+        }
+        
+        #audioLevel {
+            height: 100%;
+            width: 0%;
+            background-color: #2ecc71;
+            transition: width 0.1s;
+        }
+        
+        .permission-prompt {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #fff3cd;
+            border-left: 5px solid #ffeeba;
+            color: #856404;
+            text-align: left;
+        }
+        
+        .permission-btn {
+            background-color: #ffc107;
+            color: #856404;
+            margin-top: 10px;
+        }
+        
+        .permission-btn:hover {
+            background-color: #e0a800;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>去或不去随机选择器</h1>
+        
+        <div class="permission-prompt" id="permissionPrompt">
+            <p>本工具需要麦克风权限来生成真正的随机结果</p>
+            <button class="permission-btn" id="requestPermissionBtn">允许使用麦克风</button>
+        </div>
+        
+        <div class="result" id="result">?</div>
+        
+        <button id="decideBtn" disabled>帮我决定</button>
+        
+        <div class="loading" id="loading">
+            正在收集随机性数据...
+            <div id="micStatus"></div>
+            <div id="audioIndicator">
+                <div id="audioLevel"></div>
+            </div>
+        </div>
+        
+        <div class="info">
+            此选择器需要麦克风权限来确保结果的真正随机性
+            <div id="additionalInfo"></div>
+        </div>
+    </div>
+
+    <script>
+        const decideBtn = document.getElementById('decideBtn');
+        const result = document.getElementById('result');
+        const loading = document.getElementById('loading');
+        const micStatus = document.getElementById('micStatus');
+        const audioLevel = document.getElementById('audioLevel');
+        const permissionPrompt = document.getElementById('permissionPrompt');
+        const requestPermissionBtn = document.getElementById('requestPermissionBtn');
+        const additionalInfo = document.getElementById('additionalInfo');
+        
+        let audioContext;
+        let analyser;
+        let microphone;
+        let stream;
+        let micAvailable = false;
+        
+        // 请求麦克风权限
+        async function requestMicrophonePermission() {
+            try {
+                micStatus.textContent = "正在请求麦克风权限...";
+                
+                // 显示明确的权限请求提示
+                permissionPrompt.style.display = 'block';
+                
+                // 等待用户点击权限请求按钮
+                await new Promise((resolve) => {
+                    requestPermissionBtn.addEventListener('click', resolve, { once: true });
+                });
+                
+                micStatus.textContent = "正在检查麦克风...";
+                
+                // 实际请求麦克风权限
+                stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                
+                // 设置音频分析
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                analyser = audioContext.createAnalyser();
+                analyser.fftSize = 32;
+                microphone = audioContext.createMediaStreamSource(stream);
+                microphone.connect(analyser);
+                
+                // 检查是否有实际音频输入
+                const dataArray = new Uint8Array(analyser.frequencyBinCount);
+                analyser.getByteTimeDomainData(dataArray);
+                const rms = calculateRMS(dataArray);
+                
+                // 清理资源
+                stream.getTracks().forEach(track => track.stop());
+                microphone.disconnect();
+                
+                if (rms > 0.01) { // 有实际音频输入
+                    micAvailable = true;
+                    decideBtn.disabled = false;
+                    permissionPrompt.style.display = 'none';
+                    additionalInfo.textContent = "麦克风已准备好使用";
+                } else {
+                    additionalInfo.textContent = "麦克风无输入或音量过低，请检查后刷新页面";
+                }
+            } catch (error) {
+                micAvailable = false;
+                decideBtn.disabled = true;
+                
+                if (error.name === 'NotAllowedError') {
+                    additionalInfo.textContent = "您拒绝了麦克风访问权限，请刷新页面并允许访问";
+                } else if (error.name === 'NotFoundError') {
+                    additionalInfo.textContent = "未找到麦克风设备";
+                } else {
+                    additionalInfo.textContent = "麦克风访问错误: " + error.message;
+                }
+                
+                console.error("麦克风权限错误:", error);
+            }
+        }
+        
+        // 页面加载时请求权限
+        window.addEventListener('load', requestMicrophonePermission);
+        
+        // 收集麦克风噪声数据
+        async function collectMicrophoneNoise() {
+            if (!micAvailable) return null;
+            
+            try {
+                micStatus.textContent = "正在收集麦克风噪声数据...";
+                
+                // 重新获取麦克风权限（因为之前已经释放）
+                stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                
+                // 设置音频分析
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                analyser = audioContext.createAnalyser();
+                analyser.fftSize = 32;
+                microphone = audioContext.createMediaStreamSource(stream);
+                microphone.connect(analyser);
+                
+                // 收集音频数据
+                const dataArray = new Uint8Array(analyser.frequencyBinCount);
+                let noiseSamples = [];
+                let totalDuration = 0;
+                
+                // 收集1秒钟的音频数据
+                while (totalDuration < 1000) {
+                    analyser.getByteTimeDomainData(dataArray);
+                    noiseSamples.push(...dataArray);
+                    
+                    // 更新音频电平显示
+                    const rms = calculateRMS(dataArray);
+                    audioLevel.style.width = `${Math.min(100, rms * 2)}%`;
+                    
+                    // 等待一段时间再收集下一个样本
+                    await new Promise(resolve => setTimeout(resolve, 50));
+                    totalDuration += 50;
+                }
+                
+                micStatus.textContent = "麦克风数据收集完成";
+                return noiseSamples;
+            } catch (error) {
+                micStatus.textContent = "麦克风数据收集失败";
+                console.error("麦克风收集错误:", error);
+                return null;
+            } finally {
+                // 清理音频资源
+                if (stream) {
+                    stream.getTracks().forEach(track => track.stop());
+                }
+                if (microphone) {
+                    microphone.disconnect();
+                }
+            }
+        }
+        
+        // 计算RMS（均方根）值
+        function calculateRMS(dataArray) {
+            let sum = 0;
+            for (let i = 0; i < dataArray.length; i++) {
+                const value = (dataArray[i] - 128) / 128; // 转换为-1到1的范围
+                sum += value * value;
+            }
+            return Math.sqrt(sum / dataArray.length);
+        }
+        
+        // 生成随机决定
+        async function makeDecision() {
+            if (!micAvailable) return;
+            
+            // 显示加载状态
+            loading.style.display = 'block';
+            result.textContent = "思考中...";
+            
+            // 收集各种随机源
+            const timestamp = Date.now();
+            const micData = await collectMicrophoneNoise();
+            
+            // 使用多种随机源创建种子
+            let seed = timestamp;
+            
+            if (micData) {
+                // 使用麦克风数据作为种子
+                for (let i = 0; i < Math.min(100, micData.length); i++) {
+                    seed = (seed * 31 + micData[i]) % 1000000;
+                }
+            }
+            
+            // 添加更多随机因素
+            seed += performance.now();
+            seed += Math.random() * 1000;
+            
+            // 使用种子生成决定
+            const decision = seed % 2 === 0 ? "去！" : "不去！";
+            
+            // 显示结果
+            result.textContent = decision;
+            loading.style.display = 'none';
+            
+            // 添加一些动画效果
+            result.style.transform = 'scale(1.2)';
+            result.style.transition = 'transform 0.3s';
+            setTimeout(() => {
+                result.style.transform = 'scale(1)';
+            }, 300);
+        }
+        
+        // 事件监听
+        decideBtn.addEventListener('click', makeDecision);
+    </script>
+</body>
+</html>
