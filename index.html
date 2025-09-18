@@ -17,6 +17,7 @@
             <div class="nav-links">
                 <a class="link" href="#" data-target="#agency">我的目标</a>
                 <a class="link" href="#" data-target="#legacy">我的信念</a>
+                <a class="link" href="https://blog.maode.top" data-target="#blog">我的博客</a>
             </div>
             <div class="nav-right">
                 <a class="link" href="#" data-target="#index">我</a>
@@ -67,8 +68,9 @@
                 <h2>我的目标</h2>
             </div>
             <div class="agency-right">
-                <h3>我正在为SCPSL社区贡献力量</h3>
-                <p>通过自己的努力，挑战自己</p>
+                <h3>我正在研究Raspberry Pi</h3>
+                <p>研究出更有意思的东西，你可以在我的博客查看我的更新</p>
+                <button class="discover-button" id="blog">博客</button>
             </div>
         </section>
 
@@ -102,9 +104,26 @@
             }
         });
     });
+
+        document.getElementById('blog').onclick = function () {
+        window.open('https://blog.maode.top', '_blank');
+    };
+    document.querySelectorAll('.link').forEach(link => {
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            const targetID = this.getAttribute('data-target');
+            const targetSection = document.querySelector(targetID);
+
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
 </script>
 
 </html>
+
 
 
 
