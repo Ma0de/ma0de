@@ -17,7 +17,7 @@
             <div class="nav-links">
                 <a class="link" href="#" data-target="#agency">我的目标</a>
                 <a class="link" href="#" data-target="#legacy">我的信念</a>
-                <a class="link" id="blog" href="https://blog.maode.top">我的博客</a>
+                <a class="link" id="bl0g" href="https://blog.maode.top">我的博客</a>
             </div>
             <div class="nav-right">
                 <a class="link" href="#" data-target="#index">我</a>
@@ -99,7 +99,7 @@
 
 
     document.querySelectorAll('.link').forEach(link => {
-    if (link.id !== 'blog') {
+    if (link.id !== 'blog' && link.id !== 'bl0g') {
         link.addEventListener('click', function(event) {
             event.preventDefault();
             
@@ -115,6 +115,7 @@
 </script>
 
 </html>
+
 
 
 
