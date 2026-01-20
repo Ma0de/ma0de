@@ -12,9 +12,11 @@
     <header class="bg-black-95 h-16 fixed w-full top-0 z-50 border border-white-10">
         <nav class="grid grid-cols-auto-1fr-auto items-center max-w-1400 h-full px-6 gap-12 mx-auto">
             <div class="logo">
-                <img src="img/whitefill.png" alt="My" class="h-9">
+                <img src="img/whitefill.png" alt="My" class="h-9 sm:h-8 xs:h-7">
             </div>
-            <div class="flex gap-8">
+
+
+            <div class="flex gap-8 md:hidden">
                 <a class="nav-link text-white no-underline text-sm font-medium uppercase tracking-wider py-2 relative"
                     href="#" data-target="#about">我的目标</a>
                 <a class="nav-link text-white no-underline text-sm font-medium uppercase tracking-wider py-2 relative"
@@ -26,98 +28,152 @@
                 <a class="nav-link text-white no-underline text-sm font-medium uppercase tracking-wider py-2 relative"
                     id="blog-link" href="https://blog.maode.top">我的博客</a>
             </div>
+
             <div class="flex items-center gap-6">
-                <a class="nav-link text-white no-underline text-xs font-semibold uppercase tracking-widest" href="#"
-                    data-target="#home">我</a>
+
+                <button class="mobile-menu-btn md:block hidden" id="mobile-menu-btn">
+                    ☰
+                </button>
+                <a class="nav-link text-white no-underline text-xs font-semibold uppercase tracking-widest md:hidden"
+                    href="#" data-target="#home">我</a>
             </div>
         </nav>
+
+
+        <div class="mobile-menu md:block hidden" id="mobile-menu">
+            <div class="flex flex-col p-6 gap-4">
+                <a class="nav-link text-white no-underline text-base font-medium uppercase tracking-wider py-3 text-center"
+                    href="#" data-target="#home">我</a>
+                <a class="nav-link text-white no-underline text-base font-medium uppercase tracking-wider py-3 text-center"
+                    href="#" data-target="#about">我的目标</a>
+                <a class="nav-link text-white no-underline text-base font-medium uppercase tracking-wider py-3 text-center"
+                    href="#" data-target="#games">喜欢的游戏</a>
+                <a class="nav-link text-white no-underline text-base font-medium uppercase tracking-wider py-3 text-center"
+                    href="#" data-target="#lilith">她</a>
+                <a class="nav-link text-white no-underline text-base font-medium uppercase tracking-wider py-3 text-center"
+                    href="#" data-target="#philosophy">我的理念</a>
+                <a class="nav-link text-white no-underline text-base font-medium uppercase tracking-wider py-3 text-center"
+                    id="mobile-blog-link" href="https://blog.maode.top">我的博客</a>
+            </div>
+        </div>
     </header>
+
     <main class="mt-16">
-        <section class="bg-black min-h-90vh p-8 grid grid-cols-2 gap-16 items-center relative" id="home">
-            <div class="max-w-600 ml-auto pr-0 relative z-10">
-                <h1 class="font-heading text-7xl leading-tight font-extrabold text-white mb-12">我是<br>互联网<br>的贡献者之一</h1>
+
+        <section
+            class="bg-black min-h-90vh p-8 grid grid-cols-2 md:grid-cols-1 sm:flex-col gap-16 md:gap-12 sm:gap-8 items-center relative"
+            id="home">
+            <div class="max-w-600 ml-auto md:mx-auto sm:w-full pr-0 md:pr-0 relative z-10">
+                <h1
+                    class="font-heading text-7xl lg:text-6xl md:text-5xl sm:text-4xl xs:text-3xl leading-tight font-extrabold text-white mb-12 md:mb-8 sm:mb-6">
+                    我是<br>互联网<br>的贡献者之一</h1>
                 <div class="relative z">
-                    <p class="text-red-600 text-2xl leading-relaxed font-medium mb-6 italic">构建心中的想法，将想法转化为动力，转化为代码</p>
-                    <p class="text-base leading-relaxed text-white-80 mb-8 max-w-500">追求极致是我的"梦想"</p>
+                    <p
+                        class="text-red-600 text-2xl lg:text-xl md:text-lg sm:text-base leading-relaxed font-medium mb-6 italic">
+                        构建心中的想法，将想法转化为动力，转化为代码</p>
+                    <p
+                        class="text-base lg:text-sm sm:text-sm leading-relaxed text-white-80 mb-8 max-w-500 md:max-w-full">
+                        追求极致是我的"梦想"</p>
                     <button
-                        class="nav-link bg-red-600 text-white py-4 px-8 text-xs font-semibold uppercase tracking-widest border-none cursor-pointer transition-all hover:bg-red-700 hover:-translate-y-0_5"
+                        class="nav-link bg-red-600 text-white py-4 px-8 text-xs font-semibold uppercase tracking-widest border-none cursor-pointer transition-all hover:bg-red-700 hover:-translate-y-0_5 w-auto md:w-full sm:w-full xs:py-3 xs:px-6"
                         data-target="#about">我的目标</button>
                 </div>
             </div>
-            <div class="relative h-full min-h-500">
-                <img src="img/white.png" class="w-full h-full max-h-900 object-cover rounded-lg shadow-2xl">
+            <div class="relative h-full min-h-500 md:min-h-400 sm:min-h-300 md:order-1">
+                <img src="img/white.png"
+                    class="w-full h-full max-h-900 md:max-h-600 sm:max-h-400 object-cover rounded-lg shadow-2xl">
             </div>
         </section>
 
-        <section class="bg-white py-32 px-14" id="about">
-            <div class="max-w-1400 mx-auto grid gap-20 items-start">
-                <div>
-                    <h2 class="font-heading text-5xl leading-tight text-black mb-8">我的目标</h2>
-                    <h3 class="text-2xl leading-relaxed mb-6 font-medium text-black">我正在学习逆向工程</h3>
-                    <p class="text-base leading-loose text-gray-700 mb-8 max-w-700">研究出更有意思的东西，你可以在我的博客查看我的更新</p>
+
+        <section class="bg-white py-32 lg:py-24 md:py-20 sm:py-16 px-14 lg:px-10 md:px-8 sm:px-6 xs:px-4" id="about">
+            <div class="max-w-1400 mx-auto grid gap-20 lg:gap-16 md:gap-12 sm:gap-8 items-start">
+                <div class="w-full">
+                    <h2
+                        class="font-heading text-5xl lg:text-4xl md:text-3xl sm:text-2xl xs:text-xl leading-tight text-black mb-8 md:mb-6 sm:mb-4">
+                        我的目标</h2>
+                    <h3
+                        class="text-2xl lg:text-xl md:text-lg sm:text-base leading-relaxed mb-6 md:mb-4 font-medium text-black">
+                        我正在学习逆向工程</h3>
+                    <p
+                        class="text-base lg:text-sm sm:text-sm leading-loose text-gray-700 mb-8 md:mb-6 sm:mb-4 max-w-700 md:max-w-full">
+                        研究出更有意思的东西，你可以在我的博客查看我的更新</p>
                     <button
-                        class="bg-red-600 text-white py-4 px-8 text-xs font-semibold uppercase tracking-widest border-none cursor-pointer transition-all hover:bg-red-700 hover:-translate-y-0_5"
+                        class="bg-red-600 text-white py-4 px-8 md:py-3 md:px-6 sm:py-3 sm:px-6 xs:py-2 xs:px-4 text-xs font-semibold uppercase tracking-widest border-none cursor-pointer transition-all hover:bg-red-700 hover:-translate-y-0_5 w-auto md:w-full sm:w-full"
                         id="blog-button">博客</button>
                 </div>
             </div>
         </section>
 
-        <section class="py-32 px-6" id="games"
+
+        <section class="py-32 lg:py-24 md:py-20 sm:py-16 px-6" id="games"
             style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/library_hero.jpg'); background-size: cover; backdrop-filter: blur(8px);">
             <div class="max-w-1400 mx-auto text-center">
-                <h1 class="font-heading text-5xl text-white mb-12">我最喜欢的游戏</h1>
-                <div class="max-w-700 mx-auto">
-                    <img src="img/logo_schinese.png" class="max-w-200"><img src="img/yczs_logo_schinese.png"
-                        class="max-w-200">
+                <h1
+                    class="font-heading text-5xl lg:text-4xl md:text-3xl sm:text-2xl xs:text-xl text-white mb-12 md:mb-8 sm:mb-6">
+                    我最喜欢的游戏</h1>
+                <div class="max-w-700 mx-auto flex flex-wrap justify-center gap-8 md:gap-6 sm:gap-4">
+                    <img src="img/logo_schinese.png" class="max-w-200 md:max-w-150 sm:max-w-120 xs:max-w-100">
+                    <img src="img/yczs_logo_schinese.png" class="max-w-200 md:max-w-150 sm:max-w-120 xs:max-w-100">
                 </div>
             </div>
         </section>
-        <div class="relative -my-32 z-20 pointer-events-none">
-            <div class="max-w-1400 mx-auto px-14">
+
+
+
+        <div class="relative -my-32 md:-my-16 sm:-my-12 z-20 pointer-events-none">
+            <div class="max-w-1400 mx-auto px-14 md:px-6 sm:px-4">
                 <h2
-                    class="font-heading text-9xl text-center font-extrabold tracking-tighter select-none flex items-center justify-center">
-                    <span class="text-white mr-12">GAMES</span>
+                    class="font-heading text-9xl md:text-7xl sm:text-5xl xs:text-4xl text-center font-extrabold tracking-tighter select-none flex items-center justify-center">
+                    <span class="text-white mr-12 md:mr-8 sm:mr-4">GAMES</span>
                     <span class="text-red-600">LILITH</span>
                 </h2>
                 <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    <span class="font-heading text-2xl text-white bg-black px-8 py-4 border border-white-10">
+                    <span
+                        class="font-heading text-2xl md:text-xl sm:text-lg text-white bg-black px-8 py-4 md:px-6 md:py-3 border border-white-10">
                         关于她
                     </span>
                 </div>
             </div>
         </div>
-        <section class="bg-white py-32 px-14" id="lilith">
-            <div class="max-w-1400 mx-auto flex items-center gap-20">
-                <div class="flex-1 relative overflow-hidden">
+
+
+        <section class="bg-white py-32 lg:py-24 md:py-20 sm:py-16 px-14 lg:px-10 md:px-8 sm:px-6 xs:px-4" id="lilith">
+            <div class="max-w-1400 mx-auto flex md:flex-col items-center gap-20 lg:gap-16 md:gap-12 sm:gap-8">
+                <div class="flex-1 md:w-full relative overflow-hidden order-2 md:order-1">
                     <div id="lilith-image-container"
                         class="relative w-full h-full transition-all duration-500 ease-in-out">
                         <img id="lilith-image-1" src="img/lilith-combined.png" alt="莉莉丝"
-                            class="w-full h-auto max-w-1500 transition-all duration-500 ease-in-out opacity-100">
+                            class="w-full h-auto max-w-1500 md:max-w-full transition-all duration-500 ease-in-out opacity-100">
                         <img id="lilith-image-2" src="img/lilith-combined-0.png" alt="莉莉丝"
-                            class="absolute top-0 left-0 w-full h-auto max-w-1500 transition-all duration-500 ease-in-out opacity-0">
+                            class="absolute top-0 left-0 w-full h-auto max-w-1500 md:max-w-full transition-all duration-500 ease-in-out opacity-0">
                     </div>
                 </div>
 
-                <div class="flex-1">
-                    <h2 class="font-heading text-5xl leading-tight text-black mb-6">
+                <div class="flex-1 md:w-full order-1 md:order-2">
+                    <h2
+                        class="font-heading text-5xl lg:text-4xl md:text-3xl sm:text-2xl xs:text-xl leading-tight text-black mb-6">
                         <span class="text-red-600">莉</span>莉丝
                     </h2>
-                    <div class="mb-8 flex items-center" style="gap: 20px; height: 40px;">
+
+                    <div class="mb-8 flex items-center " style="gap: 20px; height: 40px;">
                         <button id="prev-btn"
                             class="cursor-pointer hover:text-red-600 transition-all duration-300 hover:scale-110"
-                            style="font-size: 2rem; color: #939393; font-weight: 700; background: none; border: none; padding: 0; margin: 0;">
+                            style="font-size: 2rem; color: #939393; font-weight: 700; background: none; border: none; padding: 0; margin: 0;"
+                            aria-label="上一个">
                             &lt;
                         </button>
 
-                        <div class="relative overflow-hidden" style="width: 300px; height: 100%;">
+                        <div class="relative overflow-hidden"
+                            style="width: 300px; md:width: 250px; sm:width: 200px; height: 100%;">
                             <div id="game-title-container" class="relative w-full h-full">
                                 <div id="game-title-1"
-                                    class="absolute top-0 left-0 w-full text-center text-gray-500 text-lg"
+                                    class="absolute top-0 left-0 w-full text-center text-gray-500 text-lg sm:text-base xs:text-sm"
                                     style="transition: transform 0.5s ease-in-out; transform: translateX(0); height: 100%; display: flex; align-items: center; justify-content: center;">
                                     不/存在的逐梦者：银葱之森
                                 </div>
                                 <div id="game-title-2"
-                                    class="absolute top-0 left-0 w-full text-center text-gray-500 text-lg"
+                                    class="absolute top-0 left-0 w-full text-center text-gray-500 text-lg sm:text-base xs:text-sm"
                                     style="transition: transform 0.5s ease-in-out; transform: translateX(100%); height: 100%; display: flex; align-items: center; justify-content: center;">
                                     不/存在的你，和我
                                 </div>
@@ -126,56 +182,60 @@
 
                         <button id="next-btn"
                             class="cursor-pointer hover:text-red-600 transition-all duration-300 hover:scale-110"
-                            style="font-size: 2rem; color: #939393; font-weight: 700; background: none; border: none; padding: 0; margin: 0;">
+                            style="font-size: 2rem; color: #939393; font-weight: 700; background: none; border: none; padding: 0; margin: 0;"
+                            aria-label="下一个">
                             &gt;
                         </button>
                     </div>
 
-                    <div id="quote-container" class="relative min-h-200">
+
+                    <div id="quote-container" class="relative min-h-200 md:min-h-150 sm:min-h-100">
                         <blockquote id="lilith-quote-1"
-                            class="text-2xl leading-relaxed mb-6 font-medium text-gray-700 italic border-l-4 border-red-600 pl-6 py-2 transition-all duration-500 ease-in-out opacity-100">
+                            class="text-2xl lg:text-xl md:text-lg sm:text-base leading-relaxed mb-6 font-medium text-gray-700 italic border-l-4 border-red-600 pl-6 py-2 transition-all duration-500 ease-in-out opacity-100">
                             "你要相信，你就是这个世界的主角，只要你心中认定自己是，那你就一定是。心理暗示的作用很强大哦。"
-                            <footer id="lilith-footer-1" class="text-base text-gray-500 mt-4">——莉莉丝《不/存在的逐梦者：银葱之森》
+                            <footer id="lilith-footer-1" class="text-base sm:text-sm text-gray-500 mt-4">
+                                ——莉莉丝《不/存在的逐梦者：银葱之森》
                             </footer>
                         </blockquote>
                         <blockquote id="lilith-quote-2"
-                            class="absolute top-0 left-0 text-2xl leading-relaxed mb-6 font-medium text-gray-700 italic border-l-4 border-red-600 pl-6 py-2 transition-all duration-500 ease-in-out opacity-0 w-full">
+                            class="absolute top-0 left-0 text-2xl lg:text-xl md:text-lg sm:text-base leading-relaxed mb-6 font-medium text-gray-700 italic border-l-4 border-red-600 pl-6 py-2 transition-all duration-500 ease-in-out opacity-0 w-full">
                             "因为莉莉丝代表着最纯粹的『爱』之理念，这样的莉莉丝无法存在于现实世界之中。"
-                            <footer id="lilith-footer-2" class="text-base text-gray-500 mt-4">——莉莉丝《不/存在的你，和我》</footer>
+                            <footer id="lilith-footer-2" class="text-base sm:text-sm text-gray-500 mt-4">
+                                ——莉莉丝《不/存在的你，和我》</footer>
                         </blockquote>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="bg-black py-32 px-14 text-white" id="philosophy">
-            <div class="max-w-1400 mx-auto grid grid-cols-400-1fr gap-20  px-8">
+
+        <section class="bg-black py-32 lg:py-24 md:py-20 sm:py-16 px-14 lg:px-10 md:px-8 sm:px-6 xs:px-4 text-white"
+            id="philosophy">
+            <div
+                class="max-w-1400 mx-auto grid grid-cols-400-1fr lg:grid-cols-1 md:grid-cols-1 gap-20 lg:gap-16 md:gap-12 sm:gap-8">
                 <div>
-                    <h2 class="font-heading text-5xl mb-8">我的理念</h2>
-                    <h3 class="text-2xl leading-relaxed mb-6 font-medium text-red-600">
+                    <h2
+                        class="font-heading text-5xl lg:text-4xl md:text-3xl sm:text-2xl xs:text-xl mb-8 md:mb-6 sm:mb-4">
+                        我的理念</h2>
+                    <h3
+                        class="text-2xl lg:text-xl md:text-lg sm:text-base leading-relaxed mb-6 md:mb-4 font-medium text-red-600">
                         "技术，应该填补空白"
                     </h3>
-                    <p class="text-base leading-loose text-gray-300 mb-6 max-w-600">
+                    <p
+                        class="text-base lg:text-sm sm:text-sm leading-loose text-gray-300 mb-6 md:mb-4 max-w-600 md:max-w-full">
                         当主流工具忽视某个需求时，恰恰是最需要技术介入的时刻。
                     </p>
-                    <p class="text-base leading-loose text-gray-400 mb-8 max-w-600">
+                    <p
+                        class="text-base lg:text-sm sm:text-sm leading-loose text-gray-400 mb-8 md:mb-6 max-w-600 md:max-w-full">
                         我热衷于寻找那些"有人需要，但没人去做"的领域——无论是游戏修改器、小众软件工具，
                         还是任何被忽略的技术需求，并用我的能力去实现它。
                     </p>
-                    <p class="text-base leading-loose text-gray-500 italic max-w-600">
+                    <p
+                        class="text-base lg:text-sm sm:text-sm leading-loose text-gray-500 italic max-w-600 md:max-w-full">
                         "如果放任错误信息不纠正，那就真的输了"——这句话同样适用于技术空白。
                     </p>
-                    <div class="flex gap-4 mt-8">
-                        <!--<button
-                            class="bg-transparent border border-current text-white py-4 px-8 text-xs font-semibold uppercase tracking-widest cursor-pointer transition-all hover:bg-white-10 hover:-translate-y-0_5"
-                            onclick="window.open('https://cheat.maode.top', '_blank')">
-                            查看我的作品
-                        </button>
-                        <button
-                            class="bg-red-600 text-white py-4 px-8 text-xs font-semibold uppercase tracking-widest border-none cursor-pointer transition-all hover:bg-red-700 hover:-translate-y-0_5"
-                            data-target="#about">
-                            我的目标
-                        </button>-->
+                    <div class="flex gap-4 mt-8 md:flex-col sm:flex-col">
+
                     </div>
                 </div>
             </div>
@@ -187,134 +247,220 @@
         crossorigin="anonymous"></script>
 </body>
 <script>
-    let currentLilithVersion = 1;
 
-    const lilithData = [
-        {
-            title: "不/存在的逐梦者：银葱之森",
-            quoteId: "lilith-quote-1",
-            imageId: "lilith-image-1",
-            footerId: "lilith-footer-1"
-        },
-        {
-            title: "不/存在的你，和我",
-            quoteId: "lilith-quote-2",
-            imageId: "lilith-image-2",
-            footerId: "lilith-footer-2"
+    document.addEventListener('DOMContentLoaded', function () {
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileBlogLink = document.getElementById('mobile-blog-link');
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', function () {
+                mobileMenu.classList.toggle('active');
+                mobileMenuBtn.textContent = mobileMenu.classList.contains('active') ? '✕' : '☰';
+            });
+
+
+            mobileMenu.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function () {
+                    mobileMenu.classList.remove('active');
+                    mobileMenuBtn.textContent = '☰';
+                });
+            });
+
+
+            document.addEventListener('click', function (event) {
+                if (!mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                    mobileMenu.classList.remove('active');
+                    mobileMenuBtn.textContent = '☰';
+                }
+            });
         }
-    ];
 
-    function switchLilithVersion(version) {
-        const direction = version > currentLilithVersion ? 'next' : 'prev';
-        const prevVersion = currentLilithVersion - 1;
-        const prevData = lilithData[prevVersion];
+        if (mobileBlogLink) {
+            mobileBlogLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.open('https://blog.maode.top', '_blank');
+                mobileMenu.classList.remove('active');
+                if (mobileMenuBtn) mobileMenuBtn.textContent = '☰';
+            });
+        }
 
-        document.getElementById(prevData.imageId).classList.remove('opacity-100');
-        document.getElementById(prevData.imageId).classList.add('opacity-0');
 
-        document.getElementById(prevData.quoteId).classList.remove('opacity-100');
-        document.getElementById(prevData.quoteId).classList.add('opacity-0');
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function (e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function (e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+
+                    nextVersion();
+                } else {
+
+                    prevVersion();
+                }
+            }
+        }
+
+
+        let currentLilithVersion = 1;
+
+        const lilithData = [
+            {
+                title: "不/存在的逐梦者：银葱之森",
+                quoteId: "lilith-quote-1",
+                imageId: "lilith-image-1",
+                footerId: "lilith-footer-1"
+            },
+            {
+                title: "不/存在的你，和我",
+                quoteId: "lilith-quote-2",
+                imageId: "lilith-image-2",
+                footerId: "lilith-footer-2"
+            }
+        ];
+
+        function switchLilithVersion(version) {
+            const direction = version > currentLilithVersion ? 'next' : 'prev';
+            const prevVersion = currentLilithVersion - 1;
+            const prevData = lilithData[prevVersion];
+
+            document.getElementById(prevData.imageId).classList.remove('opacity-100');
+            document.getElementById(prevData.imageId).classList.add('opacity-0');
+
+            document.getElementById(prevData.quoteId).classList.remove('opacity-100');
+            document.getElementById(prevData.quoteId).classList.add('opacity-0');
+
+            const title1 = document.getElementById('game-title-1');
+            const title2 = document.getElementById('game-title-2');
+
+            if (direction === 'next') {
+                title1.style.transform = 'translateX(-100%)';
+                title2.style.transform = 'translateX(0)';
+            } else {
+                title1.style.transform = 'translateX(0)';
+                title2.style.transform = 'translateX(100%)';
+            }
+
+            currentLilithVersion = version;
+            const currentVersion = currentLilithVersion - 1;
+            const currentData = lilithData[currentVersion];
+
+            setTimeout(() => {
+                document.getElementById(currentData.imageId).classList.remove('opacity-0');
+                document.getElementById(currentData.imageId).classList.add('opacity-100');
+
+                document.getElementById(currentData.quoteId).classList.remove('opacity-0');
+                document.getElementById(currentData.quoteId).classList.add('opacity-100');
+
+                if (currentLilithVersion === 1) {
+                    title1.style.transform = 'translateX(0)';
+                    title2.style.transform = 'translateX(100%)';
+                } else {
+                    title1.style.transform = 'translateX(-100%)';
+                    title2.style.transform = 'translateX(0)';
+                }
+
+                title1.textContent = lilithData[0].title;
+                title2.textContent = lilithData[1].title;
+            }, 250);
+        }
+
+        function nextVersion() {
+            if (currentLilithVersion === 1) {
+                switchLilithVersion(2);
+            }
+        }
+
+        function prevVersion() {
+            if (currentLilithVersion === 2) {
+                switchLilithVersion(1);
+            }
+        }
+
+        document.getElementById('next-btn').addEventListener('click', nextVersion);
+        document.getElementById('prev-btn').addEventListener('click', prevVersion);
+
+
+        document.addEventListener('keydown', function (event) {
+            if (!event.target.matches('input, textarea, select')) {
+                if (event.key === 'ArrowLeft') {
+                    prevVersion();
+                } else if (event.key === 'ArrowRight') {
+                    nextVersion();
+                }
+            }
+        });
+
 
         const title1 = document.getElementById('game-title-1');
         const title2 = document.getElementById('game-title-2');
 
-        if (direction === 'next') {
-            title1.style.transform = 'translateX(-100%)';
-            title2.style.transform = 'translateX(0)';
-        } else {
+        if (title1 && title2) {
+            title1.style.transition = 'transform 0.5s ease-in-out';
+            title2.style.transition = 'transform 0.5s ease-in-out';
             title1.style.transform = 'translateX(0)';
             title2.style.transform = 'translateX(100%)';
         }
 
-        currentLilithVersion = version;
-        const currentVersion = currentLilithVersion - 1;
-        const currentData = lilithData[currentVersion];
 
-        setTimeout(() => {
-            document.getElementById(currentData.imageId).classList.remove('opacity-0');
-            document.getElementById(currentData.imageId).classList.add('opacity-100');
+        document.querySelectorAll('.nav-link[data-target]').forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                const targetID = this.getAttribute('data-target');
+                const targetSection = document.querySelector(targetID);
+                if (targetSection) {
 
-            document.getElementById(currentData.quoteId).classList.remove('opacity-0');
-            document.getElementById(currentData.quoteId).classList.add('opacity-100');
+                    if (window.innerWidth <= 992 && mobileMenu) {
+                        mobileMenu.classList.remove('active');
+                        mobileMenuBtn.textContent = '☰';
+                    }
 
-            if (currentLilithVersion === 1) {
-                title1.style.transform = 'translateX(0)';
-                title2.style.transform = 'translateX(100%)';
-            } else {
-                title1.style.transform = 'translateX(-100%)';
-                title2.style.transform = 'translateX(0)';
-            }
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-            title1.textContent = lilithData[0].title;
-            title2.textContent = lilithData[1].title;
-        }, 250);
-    }
 
-    function nextVersion() {
-        if (currentLilithVersion === 1) {
-            switchLilithVersion(2);
+        const blogLink = document.getElementById('blog-link');
+        if (blogLink) {
+            blogLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.open('https://blog.maode.top', '_blank');
+            });
         }
-    }
 
-    function prevVersion() {
-        if (currentLilithVersion === 2) {
-            switchLilithVersion(1);
+        const blogButton = document.getElementById('blog-button');
+        if (blogButton) {
+            blogButton.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.open('https://blog.maode.top', '_blank');
+            });
         }
-    }
 
-    document.getElementById('next-btn').addEventListener('click', nextVersion);
-    document.getElementById('prev-btn').addEventListener('click', prevVersion);
 
-    document.addEventListener('keydown', function (event) {
-        if (event.key === 'ArrowLeft') {
-            prevVersion();
-        } else if (event.key === 'ArrowRight') {
-            nextVersion();
-        }
-    });
+        window.addEventListener('resize', function () {
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const title1 = document.getElementById('game-title-1');
-        const title2 = document.getElementById('game-title-2');
-
-        title1.style.transition = 'transform 0.5s ease-in-out';
-        title2.style.transition = 'transform 0.5s ease-in-out';
-        title1.style.transform = 'translateX(0)';
-        title2.style.transform = 'translateX(100%)';
-    });
-
-    document.querySelectorAll('.nav-link[data-target]').forEach(link => {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();
-            const targetID = this.getAttribute('data-target');
-            const targetSection = document.querySelector(targetID);
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            } else {
-                console.error('找不到目标元素：', targetID);
+            if (window.innerWidth > 992 && mobileMenu) {
+                mobileMenu.classList.remove('active');
+                if (mobileMenuBtn) mobileMenuBtn.textContent = '☰';
             }
         });
     });
-
-    const blogLink = document.getElementById('blog-link');
-    if (blogLink) {
-        blogLink.addEventListener('click', function (e) {
-            e.preventDefault();
-            window.open('https://blog.maode.top', '_blank');
-        });
-    }
-
-    const blogButton = document.getElementById('blog-button');
-    if (blogButton) {
-        blogButton.addEventListener('click', function (e) {
-            e.preventDefault();
-            window.open('https://blog.maode.top', '_blank');
-        });
-    }
-
 </script>
 
 </html>
