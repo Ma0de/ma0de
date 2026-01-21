@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>猫德</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
 
 <body class="bg-black text-gray-800 overflow-x-hidden">
@@ -49,7 +48,7 @@
                         构建心中的想法，将想法转化为动力，转化为代码</p>
                     <p
                         class="text-base lg:text-sm sm:text-sm leading-relaxed text-white-80 mb-8 max-w-500 md:max-w-full">
-                        追求极致是我的"梦想"</p>
+                        让"不存在"的东西"存在"是我的"梦想"</p>
                     <button
                         class="nav-link bg-red-600 text-white py-4 px-8 text-xs font-semibold uppercase tracking-widest border-none cursor-pointer transition-all hover:bg-red-700 hover:-translate-y-0_5 w-auto md:w-full sm:w-full xs:py-3 xs:px-6"
                         data-target="#about">我的目标</button>
@@ -67,14 +66,17 @@
                 class="max-w-1400 mx-auto grid grid-cols-2 lg:grid-cols-1 md:grid-cols-1 gap-20 lg:gap-16 md:gap-12 sm:gap-8 items-start">
                 <div class="w-full">
                     <h2
-                        class="font-heading text-5xl lg:text-4xl md:text-3xl sm:text-2xl xs:text-xl leading-tight text-black mb-8 md:mb-6 sm:mb-4">
+                        class="font-heading text-5xl lg:text-4xl md:text-3xl sm:text-2xl xs:text-xl leading-tight text-black md:mb-6 sm:mb-4">
                         我的目标</h2>
                     <h3
-                        class="text-2xl lg:text-xl md:text-lg sm:text-base leading-relaxed mb-6 md:mb-4 font-medium text-black">
-                        我正在学习逆向工程</h3>
+                        class="text-2xl lg:text-xl md:text-lg sm:text-base leading-relaxed mb-6 font-medium text-black text-gray-700">
+                        去做自己想做的，将想法变为现实</h3>
+                    <h3
+                        class="text-2xl lg:text-xl md:text-lg sm:text-base leading-relaxed md:mb-4 font-medium text-black">
+                        我当前正在学习逆向工程</h3>
                     <p
                         class="text-base lg:text-sm sm:text-sm leading-loose text-gray-700 mb-8 md:mb-6 sm:mb-4 max-w-700 md:max-w-full">
-                        研究出更有意思的东西，你可以在我的博客查看我的更新</p>
+                        我想将"不存在"变为"存在"，填补互联网缺少的那一块</p>
                     <button
                         class="bg-red-600 text-white py-4 px-8 md:py-3 md:px-6 sm:py-3 sm:px-6 xs:py-2 xs:px-4 text-xs font-semibold uppercase tracking-widest border-none cursor-pointer transition-all hover:bg-red-700 hover:-translate-y-0_5 w-auto md:w-full sm:w-full"
                         id="blog-button">博客</button>
@@ -135,19 +137,19 @@
                         class="font-heading text-5xl lg:text-4xl md:text-3xl sm:text-2xl xs:text-xl leading-tight text-black mb-6 flex items-center">
                         <span id="left-arrow"
                             class="cursor-pointer hover:text-red-600 transition-all duration-300 hover:scale-110 opacity-0"
-                            style="transform: translateX(-10px); font-size: 2rem; color: #939393; font-weight: 700;"
+                            style="transform: translateX(-10px); font-size: 1.5rem; color: #939393; font-weight: 700;"
                             aria-label="上一个版本">
                             &lt;
                         </span>
                         <span id="lilith-title" class="mx-2">
                             <span id="first-li" class="text-red-600">莉</span>莉丝
                         </span>
-                      <span id="right-arrow"
-      class="cursor-pointer hover:text-red-600 transition-all duration-300 hover:scale-110 opacity-0 relative"
-      style="font-size: 2rem; color: #939393; font-weight: 700; z-index: 10;" 
-      aria-label="下一个版本">
-    &gt;
-</span>
+                        <span id="right-arrow"
+                            class="cursor-pointer hover:text-red-600 transition-all duration-300 hover:scale-110 opacity-0 relative"
+                            style="font-size: 1.5rem; color: #939393; font-weight: 700; z-index: 10;"
+                            aria-label="下一个版本">
+                            &gt;
+                        </span>
                         <span id="black-label"
                             class="text-red-600 ml-3 text-base font-normal italic transition-all duration-300 opacity-0"
                             style="transform: translateX(-10px); opacity: 0; user-select: none;">
@@ -291,7 +293,7 @@
             id="philosophy">
             <div
                 class="max-w-1400 mx-auto grid grid-cols-400-1fr lg:grid-cols-1 md:grid-cols-1 gap-20 lg:gap-16 md:gap-12 sm:gap-8">
-                
+
                 <div>
                     <h2
                         class="font-heading text-5xl lg:text-4xl md:text-3xl sm:text-2xl xs:text-xl mb-8 md:mb-6 sm:mb-4">
@@ -333,90 +335,90 @@
 
 </body>
 <script>
-    
-    (function () {
-        
-        let currentLilithVersion = 1;
-        let isInBlackMode = false; 
 
-const lilithData = [
-    {
-        id: 1,
-        title: "不/存在的逐梦者：银葱之森",
-        quoteId: "lilith-quote-1",
-        imageId: "lilith-image-1",
-        footerId: "lilith-footer-1",
-        version: "normal",
-        isBlack: false,
-        showLeftArrow: false,    
-        showRightArrow: true,    
-        showBlackLabel: false,   
-        firstNameColor: "#e31836", 
-        footerText: "莉莉丝"
-    },
-    {
-        id: 2,
-        title: "不/存在的你，和我",
-        quoteId: "lilith-quote-2",
-        imageId: "lilith-image-2",
-        footerId: "lilith-footer-2",
-        version: "normal",
-        isBlack: false,
-        showLeftArrow: false,
-        showRightArrow: false,
-        showBlackLabel: false,
-        firstNameColor: "#e31836",
-        footerText: "莉莉丝"
-    },
-    {
-        id: 3,
-        title: "不/存在的逐梦者：银葱之森",
-        quoteId: "lilith-quote-3",
-        imageId: "lilith-image-3",
-        footerId: "lilith-footer-3",
-        version: "black",
-        isBlack: true,
-        showLeftArrow: true,
-        showRightArrow: false,
-        showBlackLabel: true,  
-        firstNameColor: "#000000",
-        footerText: "莉莉丝 Black"
-    }
-];
+    (function () {
+
+        let currentLilithVersion = 1;
+        let isInBlackMode = false;
+
+        const lilithData = [
+            {
+                id: 1,
+                title: "不/存在的逐梦者：银葱之森",
+                quoteId: "lilith-quote-1",
+                imageId: "lilith-image-1",
+                footerId: "lilith-footer-1",
+                version: "normal",
+                isBlack: false,
+                showLeftArrow: false,
+                showRightArrow: true,
+                showBlackLabel: false,
+                firstNameColor: "#e31836",
+                footerText: "莉莉丝"
+            },
+            {
+                id: 2,
+                title: "不/存在的你，和我",
+                quoteId: "lilith-quote-2",
+                imageId: "lilith-image-2",
+                footerId: "lilith-footer-2",
+                version: "normal",
+                isBlack: false,
+                showLeftArrow: false,
+                showRightArrow: false,
+                showBlackLabel: false,
+                firstNameColor: "#e31836",
+                footerText: "莉莉丝"
+            },
+            {
+                id: 3,
+                title: "不/存在的逐梦者：银葱之森",
+                quoteId: "lilith-quote-3",
+                imageId: "lilith-image-3",
+                footerId: "lilith-footer-3",
+                version: "black",
+                isBlack: true,
+                showLeftArrow: true,
+                showRightArrow: false,
+                showBlackLabel: true,
+                firstNameColor: "#000000",
+                footerText: "莉莉丝 Black"
+            }
+        ];
 
         function switchLilithVersion(version) {
             const prevVersionIndex = currentLilithVersion - 1;
             const prevData = lilithData[prevVersionIndex];
 
-            
+
             document.getElementById(prevData.imageId).classList.remove('opacity-100');
             document.getElementById(prevData.imageId).classList.add('opacity-0');
 
             document.getElementById(prevData.quoteId).classList.remove('opacity-100');
             document.getElementById(prevData.quoteId).classList.add('opacity-0');
 
-            
+
             const title1 = document.getElementById('game-title-1');
             const title2 = document.getElementById('game-title-2');
             const title3 = document.getElementById('game-title-3');
 
-            
+
             currentLilithVersion = version;
             const currentVersionIndex = currentLilithVersion - 1;
             const currentData = lilithData[currentVersionIndex];
 
-            
+
             isInBlackMode = currentData.isBlack;
 
             setTimeout(() => {
-                
+
                 document.getElementById(currentData.imageId).classList.remove('opacity-0');
                 document.getElementById(currentData.imageId).classList.add('opacity-100');
 
                 document.getElementById(currentData.quoteId).classList.remove('opacity-0');
                 document.getElementById(currentData.quoteId).classList.add('opacity-100');
 
-                
+
                 if (currentLilithVersion === 1) {
                     title1.style.transform = 'translateX(0)';
                     title2.style.transform = 'translateX(100%)';
@@ -431,28 +433,28 @@ const lilithData = [
                     title3.style.transform = 'translateX(0)';
                 }
 
-                
+
                 updateArrowsAndLabel(currentData);
 
-                
+
                 const firstLi = document.getElementById('first-li');
                 if (firstLi) {
                     firstLi.style.color = currentData.firstNameColor;
                 }
 
-                
+
                 toggleButtonVisibility();
 
             }, 250);
         }
 
-        
+
         function updateArrowsAndLabel(data) {
             const leftArrow = document.getElementById('left-arrow');
             const rightArrow = document.getElementById('right-arrow');
             const blackLabel = document.getElementById('black-label');
 
-            
+
             if (leftArrow) {
                 if (data.showLeftArrow) {
                     leftArrow.style.opacity = '1';
@@ -463,7 +465,7 @@ const lilithData = [
                 }
             }
 
-            
+
             if (rightArrow) {
                 if (data.showRightArrow) {
                     rightArrow.style.opacity = '1';
@@ -474,7 +476,7 @@ const lilithData = [
                 }
             }
 
-            
+
             if (blackLabel) {
                 if (data.showBlackLabel) {
                     blackLabel.style.opacity = '1';
@@ -486,74 +488,74 @@ const lilithData = [
             }
         }
 
-        
+
         function toggleButtonVisibility() {
             const buttonContainer = document.querySelector('.mb-8.flex.items-center');
             if (buttonContainer) {
                 if (isInBlackMode) {
-                    
+
                     buttonContainer.style.display = 'none';
                 } else {
-                    
+
                     buttonContainer.style.display = 'flex';
                 }
             }
         }
 
-        
+
         function nextVersion() {
-            if (currentLilithVersion < 2) { 
+            if (currentLilithVersion < 2) {
                 switchLilithVersion(currentLilithVersion + 1);
             }
         }
 
-        
+
         function prevVersion() {
-            if (currentLilithVersion === 2) { 
+            if (currentLilithVersion === 2) {
                 switchLilithVersion(1);
             }
         }
 
-        
+
         function switchToBlack() {
-            if (currentLilithVersion === 1) { 
+            if (currentLilithVersion === 1) {
                 switchLilithVersion(3);
             }
         }
 
-        
+
         function switchFromBlack() {
             if (currentLilithVersion === 3) {
-                
+
                 switchLilithVersion(1);
             }
         }
 
-        
+
         function handleNameArrowClick(event) {
             const arrowType = event.currentTarget.id;
 
             if (arrowType === 'left-arrow') {
                 if (currentLilithVersion === 3) {
-                    
+
                     switchFromBlack();
                 } else if (currentLilithVersion === 2) {
-                    
+
                     switchLilithVersion(1);
                 }
             } else if (arrowType === 'right-arrow') {
                 if (currentLilithVersion === 1 && !isInBlackMode) {
-                    
+
                     switchToBlack();
                 }
             }
         }
 
-        
+
         function handleBottomButtonClick(event) {
             const buttonType = event.currentTarget.id;
 
-            if (isInBlackMode) return; 
+            if (isInBlackMode) return;
 
             if (buttonType === 'prev-btn') {
                 prevVersion();
@@ -562,32 +564,32 @@ const lilithData = [
             }
         }
 
-        
+
         function handleKeyDown(event) {
             if (!event.target.matches('input, textarea, select')) {
                 if (event.key === 'ArrowLeft') {
                     event.preventDefault();
                     if (currentLilithVersion === 3) {
-                        
+
                         switchFromBlack();
                     } else if (currentLilithVersion === 2) {
-                        
+
                         switchLilithVersion(1);
                     }
                 } else if (event.key === 'ArrowRight') {
                     event.preventDefault();
                     if (currentLilithVersion === 1 && !isInBlackMode) {
-                        
+
                         switchToBlack();
                     } else if (currentLilithVersion === 1) {
-                        
+
                         nextVersion();
                     }
                 }
             }
         }
 
-        
+
         let touchStartX = 0;
         let touchEndX = 0;
 
@@ -606,14 +608,14 @@ const lilithData = [
 
             if (Math.abs(diff) > swipeThreshold) {
                 if (diff > 0) {
-                    
+
                     if (currentLilithVersion === 1 && !isInBlackMode) {
                         switchToBlack();
                     } else if (currentLilithVersion === 1) {
                         nextVersion();
                     }
                 } else {
-                    
+
                     if (currentLilithVersion === 3) {
                         switchFromBlack();
                     } else if (currentLilithVersion === 2) {
@@ -623,9 +625,9 @@ const lilithData = [
             }
         }
 
-        
+
         function initLilithModule() {
-            
+
             const title1 = document.getElementById('game-title-1');
             const title2 = document.getElementById('game-title-2');
             const title3 = document.getElementById('game-title-3');
@@ -639,19 +641,19 @@ const lilithData = [
                 title3.style.transform = 'translateX(200%)';
             }
 
-            
+
             updateArrowsAndLabel(lilithData[0]);
 
-            
+
             const firstLi = document.getElementById('first-li');
             if (firstLi) {
                 firstLi.style.color = lilithData[0].firstNameColor;
             }
 
-            
+
             toggleButtonVisibility();
 
-            
+
             const nameLeftArrow = document.getElementById('left-arrow');
             const nameRightArrow = document.getElementById('right-arrow');
 
@@ -663,7 +665,7 @@ const lilithData = [
                 nameRightArrow.addEventListener('click', handleNameArrowClick);
             }
 
-            
+
             const bottomPrevBtn = document.getElementById('prev-btn');
             const bottomNextBtn = document.getElementById('next-btn');
 
@@ -675,15 +677,15 @@ const lilithData = [
                 bottomNextBtn.addEventListener('click', handleBottomButtonClick);
             }
 
-            
+
             document.addEventListener('keydown', handleKeyDown);
 
-            
+
             document.addEventListener('touchstart', handleTouchStart);
             document.addEventListener('touchend', handleTouchEnd);
         }
 
-        
+
         window.LilithModule = {
             init: initLilithModule,
             switchToBlack: switchToBlack,
@@ -695,7 +697,7 @@ const lilithData = [
         };
     })();
 
-    
+
     (function () {
         document.addEventListener('DOMContentLoaded', function () {
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -732,7 +734,7 @@ const lilithData = [
                 });
             }
 
-            
+
             document.querySelectorAll('.nav-link[data-target]').forEach(link => {
                 link.addEventListener('click', function (event) {
                     event.preventDefault();
@@ -751,7 +753,7 @@ const lilithData = [
                 });
             });
 
-            
+
             const blogLink = document.getElementById('blog-link');
             if (blogLink) {
                 blogLink.addEventListener('click', function (e) {
@@ -768,7 +770,7 @@ const lilithData = [
                 });
             }
 
-            
+
             window.addEventListener('resize', function () {
                 if (window.innerWidth > 992 && mobileMenu) {
                     mobileMenu.classList.remove('active');
@@ -778,7 +780,7 @@ const lilithData = [
         });
     })();
 
-    
+
     (function () {
         const techStackData = {
             languages: [
@@ -996,7 +998,7 @@ const lilithData = [
             }
         }
 
-        
+
         function initTagClouds() {
             setTimeout(() => {
                 new TagCloud3D('languages-cloud', techStackData.languages, {
@@ -1019,14 +1021,14 @@ const lilithData = [
             }, 500);
         }
 
-        
+
         document.addEventListener('DOMContentLoaded', function () {
-            
+
             if (typeof LilithModule !== 'undefined') {
                 LilithModule.init();
             }
 
-            
+
             initTagClouds();
         });
     })();
